@@ -1,0 +1,20 @@
+GEM
+  specs:
+    jasmine (3.3.0)
+      jasmine-core (~> 3.3.0)
+      phantomjs
+      rack (>= 1.2.1)
+      rake
+    jasmine-core (3.3.0)
+    phantomjs (2.1.1.0)
+    rack (2.0.5)
+    rake (12.3.1)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  jasmine
+
+BUNDLED WITH
+   1.16.1
