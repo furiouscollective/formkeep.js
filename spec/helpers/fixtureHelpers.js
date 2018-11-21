@@ -9,3 +9,8 @@ function mountFixture(fixtureId, fixtureTemplate) {
 function unmountFixture(fixtureId) {
   document.getElementById(fixtureId).remove()
 }
+
+module.exports = {
+  mountFixture: mountFixture,
+  unmountFixture: unmountFixture
+}

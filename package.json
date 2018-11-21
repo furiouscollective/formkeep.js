@@ -1,0 +1,15 @@
+{
+  "name": "formkeep.js",
+  "version": "0.0.0",
+  "description": "FormKeep helpers for the browser",
+  "main": "index.js",
+  "author": "FormKeep",
+  "license": "UNLICENSED",
+  "private": true,
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}

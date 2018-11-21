@@ -1,5 +1,23 @@
 # FormKeep.js
 
+## Node + Jest
+Jest is a JS testing package built by Facebook, it's easy to set up by Node standards and is very complete.
+
+To set up the dependencies:
+  - [Install yarn](https://yarnpkg.com/lang/en/docs/install/#mac-stable)
+  - Run `yarn install`
+
+To run the tests:
+  - `yarn test`
+
+### Advantages
+- Easy to set up
+- Takes advantage of the full JS ecosystem
+
+### Disadvantages
+- Must use modules and a build step (which is somewhat overkill for a simple script but might not be later)
+- Is not easy to run the tests on the browser (but this shouldn't be a big deal)
+
 ## Ruby + Jasmine
 Jasmine is a simple but feature complete JavaScript testing framework.
 The `ruby-jasmine` branch has a simple ruby setup to serve the javascript (both the tests and testing code)
