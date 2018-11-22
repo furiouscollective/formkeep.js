@@ -1,5 +1,5 @@
 const fixtureHelpers = require('./helpers/fixtureHelpers')
-const app = require('../index.js')
+const appHelpers = require('../helpers')
 
 describe('index.js', function() {
   beforeEach(function() {
@@ -13,6 +13,6 @@ describe('index.js', function() {
   })
 
   it('gets tested', function() {
-    expect(app.getTrue()).toBe(true)
+    expect(appHelpers.getTrue()).toBe(true)
   })
 })

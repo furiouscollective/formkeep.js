@@ -1,7 +1,6 @@
-function getTrue() {
-  return true
-}
+const helpers = require('./helpers')
+const mock = require('xhr-mock')
 
-module.exports = {
-  getTrue: getTrue
-}
+debugger
+
+console.log(helpers.getTrue())
