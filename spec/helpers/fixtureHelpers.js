@@ -1,4 +1,4 @@
-function mountFixture(fixtureId, fixtureTemplate) {
+export function mountFixture(fixtureId, fixtureTemplate) {
   var fixture = document.createElement('div')
   fixture.id = fixtureId
   fixture.innerHTML = fixtureTemplate
@@ -6,11 +6,6 @@ function mountFixture(fixtureId, fixtureTemplate) {
   document.body.appendChild(fixture)
 }
 
-function unmountFixture(fixtureId) {
+export function unmountFixture(fixtureId) {
   document.getElementById(fixtureId).remove()
-}
-
-module.exports = {
-  mountFixture: mountFixture,
-  unmountFixture: unmountFixture
 }
