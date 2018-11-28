@@ -19,6 +19,7 @@ describe('index.js', () => {
     const config = {
       beforeSubmit: (formJson) => {
         formJson.datePosted = '2018-11-28'
+        return formJson
       },
       onSuccess: (response) => {
         document.getElementById('info-box').textContent = 'Submitted successfully'
@@ -78,13 +79,13 @@ describe('index.js', () => {
   it('posts the form with correct data', (done) => {
     const httpRequestMock = nock('https://formkeep.com')
     .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
-    .post('/f/f3a748fed01a')
-    .reply(400, {
+    .post('/f/f3a748fed01a', {
       comments: 'I ❤️ FormKeep',
       datePosted: '2018-11-28',
       email: 'test@example.com',
       utf8: '✓'
     })
+    .reply(200, 'OK')
 
     clickSubmit()
 
