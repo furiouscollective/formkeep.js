@@ -9,7 +9,7 @@
   "scripts": {
     "test": "jest",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
-    "build": "parcel build browser.js index.js"
+    "build": "parcel build index.js --global Formkeep"
   },
   "devDependencies": {
     "@babel/core": "^7.1.6",
