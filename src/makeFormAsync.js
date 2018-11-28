@@ -3,7 +3,6 @@ import sendFormJson from './sendFormJson'
 const buildJsonFromForm = form => (
   Array.from((new FormData(form)).entries())
   .reduce((jsonData, formDataPair) => {
-    debugger
     jsonData[formDataPair[0]] = formDataPair[1];
     return jsonData
   }, {})
