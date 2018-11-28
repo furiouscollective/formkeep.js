@@ -1,9 +1,2 @@
-import sendFormJson from './src/sendFormJson'
-import makeFormAsync from './src/makeFormAsync'
-
-const Formkeep = {
-  sendFormJson,
-  makeFormAsync
-}
-
-export default Formkeep
+export { default as sendFormJson } from './src/sendFormJson'
+export { default as makeFormAsync } from './src/makeFormAsync'
