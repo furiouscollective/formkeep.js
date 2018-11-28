@@ -5,7 +5,6 @@
   "main": "./dist/index.js",
   "author": "FormKeep",
   "license": "UNLICENSED",
-  "private": true,
   "scripts": {
     "test": "jest",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
