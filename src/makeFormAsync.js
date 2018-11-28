@@ -1,12 +1,5 @@
 import sendFormJson from './sendFormJson'
-
-const buildJsonFromForm = form => (
-  Array.from((new FormData(form)).entries())
-  .reduce((jsonData, formDataPair) => {
-    jsonData[formDataPair[0]] = formDataPair[1];
-    return jsonData
-  }, {})
-)
+import { buildJsonFromForm } from './utils'
 
 const handleSubmitAsync = (event, identifier, config) => {
   // Prevent regular submission
