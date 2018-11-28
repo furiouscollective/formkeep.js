@@ -4,7 +4,7 @@ import sendFormJson from './sendFormJson'
 
 jest.mock('./sendFormJson')
 
-describe('asyncForm.js', () => {
+describe('makeFormAsync.js', () => {
   const formkeepIdentifier = 'f3a748fed01a'
   const utf8 = '✓'
   const email = 'test@example.com'
