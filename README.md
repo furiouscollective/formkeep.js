@@ -24,7 +24,7 @@ This library offers a few methods to post data to FormKeep using AJAX, so you ca
     const Formkeep = window.Formkeep
   ```
 
-#### sendForm(formkeepIdentifier: string, formData: Object, options: Object)
+#### sendFormJson(formkeepIdentifier: string, formData: Object, options: Object)
 You can use it to easily post JSON data to a FormKeep form
 - `formkeepIdentifier`: your form's unique identifier (you can find it in your FormKeep dashboard)
 - `formData`: a JSON object with the data you want to post

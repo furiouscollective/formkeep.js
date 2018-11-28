@@ -9,22 +9,27 @@ const buildJsonFromForm = form => (
   }, {})
 )
 
-const handleSubmitAsync = (event, config) => {
+const handleSubmitAsync = (event, identifier, config) => {
   // Prevent regular submission
   event.preventDefault()
 
   const form = event.target
 
-  // Parse the form data into JSON (maybe we can just submit the form data, this should be a separate function)
-  const formJson = config.beforeSubmit(buildJsonFromForm(form))
-  // Build the URL from the identifier, maybe it's better if this identifier is passed in
-  const formkeepUrl = "https://formkeep.com/f/" + form.dataset['formkeepIdentifier']
+  // Parse the form data into JSON
+  let formJson = buildJsonFromForm(form)
 
-  sendFormJson(formkeepUrl, formJson, config)
+  // Pass form JSON to `beforeSubmit` callback
+  if (config.beforeSubmit) { formJson = config.beforeSubmit(formJson) }
+
+  // Prevent submission if `beforeSubmit` returns false
+  if (formJson === false) { return }
+
+  // Submit form
+  sendFormJson(identifier, formJson, config)
 }
 
-const makeFormAsync = (form, config) => {
-  form.addEventListener('submit', (event) => handleSubmitAsync(event, config))
+const makeFormAsync = (form, identifier, config) => {
+  form.addEventListener('submit', (event) => handleSubmitAsync(event, identifier, config))
 }
 
 export default makeFormAsync

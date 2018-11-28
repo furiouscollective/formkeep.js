@@ -2,7 +2,8 @@ import xhrMock from 'xhr-mock'
 import sendFormJson from './sendFormJson'
 
 describe('sendFormJson.js', function() {
-  const url = "https://formkeep.com/f/f3a748fed01a"
+  const formkeepIdentifier = 'f3a748fed01a'
+  const url = `https://formkeep.com/f/${formkeepIdentifier}`
   const jsonData = {
     email: 'test@example.com',
     comments: 'I ❤️ Formkeep'
@@ -17,7 +18,7 @@ describe('sendFormJson.js', function() {
       return res.status(201).body(JSON.stringify(jsonData))
     })
 
-    sendFormJson(url, jsonData, {
+    sendFormJson(formkeepIdentifier, jsonData, {
       onSuccess: (response) => { done() }
     })
   })
@@ -29,7 +30,7 @@ describe('sendFormJson.js', function() {
       return res.status(201).body(JSON.stringify(jsonData))
     })
 
-    sendFormJson(url, jsonData, {
+    sendFormJson(formkeepIdentifier, jsonData, {
       onSuccess: (response) => { done() }
     })
   })
@@ -37,7 +38,7 @@ describe('sendFormJson.js', function() {
   it('calls the success callback on 200 responses', (done) => {
     xhrMock.post(url, (req, res) => (res.status(201).body(JSON.stringify(jsonData))))
 
-    sendFormJson(url, jsonData, {
+    sendFormJson(formkeepIdentifier, jsonData, {
       onSuccess: (response) => { done() }
     })
   })
@@ -45,23 +46,23 @@ describe('sendFormJson.js', function() {
   it('calls the success callback on 300 responses', (done) => {
     xhrMock.post(url, (req, res) => (res.status(301).body(JSON.stringify(jsonData))))
 
-    sendFormJson(url, jsonData, {
+    sendFormJson(formkeepIdentifier, jsonData, {
       onSuccess: (response) => { done() }
     })
   })
 
   it('calls the failure callback on 400 responses', (done) => {
-    xhrMock.post(url, (req, res) => (res.status(404).body(JSON.stringify(jsonData))))
+    xhrMock.post(url, (req, res) => (res.status(404)))
 
-    sendFormJson(url, jsonData, {
+    sendFormJson(formkeepIdentifier, jsonData, {
       onFailure: (response) => { done() }
     })
   })
 
   it('calls the failure callback on 500 responses', (done) => {
-    xhrMock.post(url, (req, res) => (res.status(501).body(JSON.stringify(jsonData))))
+    xhrMock.post(url, (req, res) => (res.status(501)))
 
-    sendFormJson(url, jsonData, {
+    sendFormJson(formkeepIdentifier, jsonData, {
       onFailure: (response) => { done() }
     })
   })

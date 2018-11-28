@@ -1,5 +1,6 @@
-export function sendFormJson(url, jsonData, config) {
+export function sendFormJson(formkeepIdentifier, jsonData, config) {
   const Xhr = new XMLHttpRequest()
+  const url = `https://formkeep.com/f/${formkeepIdentifier}`
 
   Xhr.addEventListener('load', (response) => {
     if (Xhr.status >= 200 && Xhr.status < 400) {
