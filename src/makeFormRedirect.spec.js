@@ -1,5 +1,6 @@
 import nock from 'nock'
 import { mountFixture, unmountFixture } from '../spec/helpers/fixtureHelpers'
+import { submitForm, assertOnSubmit } from '../spec/helpers/formHelpers'
 import makeFormRedirect from './makeFormRedirect'
 
 describe('makeFormRedirect.js', () => {
@@ -28,15 +29,11 @@ describe('makeFormRedirect.js', () => {
       )
     })
 
-    form.addEventListener('submit', event => {
-      event.preventDefault()
-
+    assertOnSubmit(form, done, () => {
       expect(form.querySelector('input[type=hidden][name=_redirect_url]').value)
       .toEqual('https://example.com/greeting?name=test@example.com')
-
-      done()
     })
 
-    form.dispatchEvent(new Event('submit'))
+    submitForm(form)
   })
 })

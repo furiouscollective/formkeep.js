@@ -1,4 +1,6 @@
 import { mountFixture, unmountFixture } from '../spec/helpers/fixtureHelpers'
+import { submitForm } from '../spec/helpers/formHelpers'
+
 import makeFormAsync from './makeFormAsync'
 import sendFormJson from './sendFormJson'
 
@@ -37,7 +39,7 @@ describe('makeFormAsync.js', () => {
     }
 
     makeFormAsync(form, formkeepIdentifier, config)
-    form.dispatchEvent(new Event('submit'))
+    submitForm(form)
 
     expect(sendFormJson).toBeCalledWith(
       formkeepIdentifier,
@@ -51,7 +53,7 @@ describe('makeFormAsync.js', () => {
     const config = { beforeSubmit: (formJson) => (Object.assign(formJson, { email: otherEmail})) }
 
     makeFormAsync(form, formkeepIdentifier, config)
-    form.dispatchEvent(new Event('submit'))
+    submitForm(form)
 
     expect(sendFormJson).toBeCalledWith(
       formkeepIdentifier,
@@ -65,7 +67,7 @@ describe('makeFormAsync.js', () => {
     const config = { beforeSubmit: formJson => false }
 
     makeFormAsync(form, formkeepIdentifier, config)
-    form.dispatchEvent(new Event('submit'))
+    submitForm(form)
 
     expect(sendFormJson).not.toBeCalled()
   })

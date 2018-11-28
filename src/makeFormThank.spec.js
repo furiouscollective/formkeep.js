@@ -1,5 +1,6 @@
 import nock from 'nock'
 import { mountFixture, unmountFixture } from '../spec/helpers/fixtureHelpers'
+import { submitForm, assertOnSubmit } from '../spec/helpers/formHelpers'
 import makeFormThank from './makeFormThank'
 
 describe('makeFormThank.js', () => {
@@ -31,15 +32,11 @@ describe('makeFormThank.js', () => {
       )
     })
 
-    form.addEventListener('submit', event => {
-      event.preventDefault()
-
+    assertOnSubmit(form, done, () => {
       expect(form.querySelector('input[type=hidden][name=_redirect_url]').value)
       .toEqual("https://formkeep.com/thanks?h=Thanks John Dowd!&s=We'll contact you at test@example.com")
-
-      done()
     })
 
-    form.dispatchEvent(new Event('submit'))
+    submitForm(form)
   })
 })
