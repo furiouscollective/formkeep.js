@@ -17,17 +17,19 @@ This library offers a few methods to post data to FormKeep using AJAX, so you ca
 #### Import globally *NOT PUBLISHED*
 - Add to your HTML header:
   ```html
-    <script src="unpkg.com/formkeep/dist/browser.js"></script>
+    <script src="unpkg.com/formkeep/dist/index.js"></script>
   ```
 - Use in your code with:
   ```javascript
     const Formkeep = window.Formkeep
   ```
 
-#### sendFormJson(formkeepIdentifier: string, formData: Object, options: Object)
+#### API
+
+##### sendFormJson(formkeepIdentifier: string, formJson: Object, options: Object)
 You can use it to easily post JSON data to a FormKeep form
 - `formkeepIdentifier`: your form's unique identifier (you can find it in your FormKeep dashboard)
-- `formData`: a JSON object with the data you want to post
+- `formJson`: a JSON object with the data you want to post
 - `options`:
   - `onSuccess` (this could probably be passed a param, either the response or the posted data) a function to call when the data is successfully posted to FormKeep.
   - `onFailure` (this too could be passed a param) a function to call if posting the form fails (we should add why would this happen)
@@ -46,7 +48,7 @@ Example:
   })
 ```
 
-#### makeFormAsync(form: HTMLFormElement, options: Object)
+##### makeFormAsync(form: HTMLFormElement, options: Object)
 You can use this to make any form post to FormKeep using AJAX, so you can handle what to do afterwards.
 - `form`: the form element you want to post through AJAX.
 - `formkeepIdentifier`: the id of the form to post.
@@ -73,13 +75,13 @@ Example:
 
   FormKeep.makeFormAsync(form, {
     formkeepIdentifier: 'bac7724',
-    beforeSubmit: (formData) => {
+    beforeSubmit: (formJson) => {
       if (!form.querySelector('input[name=email]').value.includes('@')) {
         return false
       }
 
-      formData['publisher'] = 'ACME'
-      return formData
+      formJson.publisher = 'ACME'
+      return formJson
     },
     onSuccess: () => {
       window.alert('Successfully posted!')
@@ -87,6 +89,69 @@ Example:
     onFailure: () => {
       window.alert('There was an error posting your form!')
     }
+  })
+```
+
+##### makeFormThank(form: HTMLFormElement, config: Object)
+You can use this to dynamically add thanks params to the FormKeep thanks page
+- `form`: the form element you want to modify (it should be [set up to post to formkeep](linktodocs)).
+- `options`:
+  - `setHeading(formJson: Object)`: a function that sets the heading for the thank you page. It is passed the form's data as a JSON object for convenience.
+  - `setSubheading(formJson: Object)`: a function that sets the subheading for the thank you page. It is also passed the form's data as a JSON object.
+
+Example:
+
+```html
+  <!-- On your markup -->
+  <form id="test-form" action="https://formkeep.com/f/f3a748fed01a" method="POST">
+    <input type="hidden" name="utf8" value="✓" />
+    <input name="name" value="John Dowd" />
+    <input name="email" value="test@example.com" />
+    <button type="submit">Submit</button>
+  </form>
+```
+
+```javascript
+  // On your script
+  const Formkeep = window.Formkeep // or require('formkeep')
+
+  const form = document.getElementById('test-form')
+  Formkeep.makeFormThank(form, {
+    setHeading: formJson => (
+      `Thanks ${formJson.name}!`
+    ),
+    setSubheading: formJson => (
+      `We'll contact you at ${formJson.email}`
+    )
+  })
+```
+
+##### makeFormRedirect(form: HTMLFormElement, config: Object)
+You can use this to dynamically add thanks params to the FormKeep thanks page
+- `form`: the form element you want to modify (it should be [set up to post to formkeep](linktodocs)).
+- `options`:
+  - `setRedirectUrl(formJson: Object)`: a function that sets the redirect URL when the form is submitted. It is passed the form's data as a JSON object for convenience.
+
+Example:
+
+```html
+  <!-- On your markup -->
+  <form id="test-form" action="https://formkeep.com/f/f3a748fed01a" method="POST">
+    <input type="hidden" name="utf8" value="✓" />
+    <input name="email" value="test@example.com" />
+    <button type="submit">Submit</button>
+  </form>
+```
+
+```javascript
+  // On your script
+  const Formkeep = window.Formkeep // or require('formkeep')
+
+  const form = document.getElementById('test-form')
+  Formkeep.makeFormRedirect(form, {
+    setRedirectUrl: formJson => (
+      `https://example.com/greeting?name=${formJson.email}`
+    )
   })
 ```
 
