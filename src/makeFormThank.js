@@ -2,8 +2,8 @@ import { buildJsonFromForm, buildThanksUrl, createHiddenInput } from './utils'
 
 const handleSubmitWithThanks = (form, config) => {
   const formJson = buildJsonFromForm(form)
-  const heading = config.setHeading && `h=${config.setHeading(formJson)}`
-  const subheading = config.setSubheading && `s=${config.setSubheading(formJson)}`
+  const heading = `h=${config.setHeading(formJson)}`
+  const subheading = `s=${config.setSubheading(formJson)}`
 
   form.appendChild(createHiddenInput('_redirect_url', buildThanksUrl(heading, subheading)))
 }

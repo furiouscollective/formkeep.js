@@ -26,7 +26,7 @@ This library offers a few methods to post data to FormKeep using AJAX, so you ca
 
 #### API
 
-##### sendFormJson(formkeepIdentifier: string, formJson: Object, options: Object)
+##### sendFormJson(formkeepIdentifier: string, formJson: Object, options: Object | null)
 You can use it to easily post JSON data to a FormKeep form
 - `formkeepIdentifier`: your form's unique identifier (you can find it in your FormKeep dashboard)
 - `formJson`: a JSON object with the data you want to post
@@ -48,7 +48,7 @@ Example:
   })
 ```
 
-##### makeFormAsync(form: HTMLFormElement, options: Object)
+##### makeFormAsync(form: HTMLFormElement, options: Object | null)
 You can use this to make any form post to FormKeep using AJAX, so you can handle what to do afterwards.
 - `form`: the form element you want to post through AJAX.
 - `formkeepIdentifier`: the id of the form to post.
@@ -128,7 +128,7 @@ Example:
   })
 ```
 
-##### makeFormWithSuccessTemplate(form: HTMLFormElement, identifier, config: Object)
+##### makeFormWithSuccessTemplate(form: HTMLFormElement, identifier, config: Object | null)
 You can use this to show a message after the form is submitted.
 - `form`: the form element you want to modify.
 - `formkeepIdentifier`: the id of the form to post.

@@ -1,7 +1,7 @@
 import { makeFormAsync } from './makeFormAsync'
 import { buildJsonFromForm } from './utils'
 
-export const makeFormShowSuccessTemplate = (form, identifier, config) => {
+export const makeFormShowSuccessTemplate = (form, identifier, config = {}) => {
   makeFormAsync(form, identifier, {
     beforeSubmit: config.beforeSubmit,
     onFailure: config.onFailure,
@@ -11,7 +11,7 @@ export const makeFormShowSuccessTemplate = (form, identifier, config) => {
 
       templateTarget.replaceWith(template.content)
 
-      config.onSuccess()
+      config.onSuccess && config.onSuccess()
     }
   })
 }

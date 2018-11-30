@@ -1,14 +1,14 @@
-export const sendFormJson = (formkeepIdentifier, jsonData, config) => {
+export const sendFormJson = (formkeepIdentifier, jsonData, config = {}) => {
   const Xhr = new XMLHttpRequest()
   const url = `https://formkeep.com/f/${formkeepIdentifier}`
 
   Xhr.addEventListener('load', (response) => {
     if (Xhr.status >= 200 && Xhr.status < 400) {
-      config.onSuccess(response)
+      config.onSuccess && config.onSuccess(response)
     }
 
     if (Xhr.status >= 400 && Xhr.status < 600) {
-      config.onFailure(response)
+      config.onFailure && config.onFailure(response)
     }
   })
 

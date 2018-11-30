@@ -1,17 +1,16 @@
 import { sendFormJson } from './sendFormJson'
 import { buildJsonFromForm } from './utils'
 
-const handleSubmitAsync = (event, identifier, config) => {
+const handleSubmitAsync = (event, identifier, config = {}) => {
   // Prevent regular submission
   event.preventDefault()
 
   const form = event.target
 
   // Parse the form data into JSON
-  let formJson = buildJsonFromForm(form)
-
-  // Pass form JSON to `beforeSubmit` callback
-  if (config.beforeSubmit) { formJson = config.beforeSubmit(formJson) }
+  const formJson = config.beforeSubmit
+  ? config.beforeSubmit(buildJsonFromForm(form))
+  : buildJsonFromForm(form)
 
   // Prevent submission if `beforeSubmit` returns false
   if (formJson === false) { return }
