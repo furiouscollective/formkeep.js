@@ -1,8 +1,8 @@
 import { mountFixture, unmountFixture } from '../spec/utils'
 import { submitForm } from '../spec/utils'
 
-import makeFormAsync from './makeFormAsync'
-import sendFormJson from './sendFormJson'
+import { makeFormAsync } from './makeFormAsync'
+import { sendFormJson } from './sendFormJson'
 
 jest.mock('./sendFormJson')
 

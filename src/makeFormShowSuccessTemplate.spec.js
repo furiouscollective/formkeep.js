@@ -1,7 +1,7 @@
 import { mountFixture, unmountFixture } from '../spec/utils'
 import { submitForm } from '../spec/utils'
-import makeFormShowSuccessTemplate from './makeFormShowSuccessTemplate'
-import sendFormJson from './sendFormJson'
+import { makeFormShowSuccessTemplate } from './makeFormShowSuccessTemplate'
+import { sendFormJson } from './sendFormJson'
 
 jest.mock('./sendFormJson')
 

@@ -1,7 +1,7 @@
 import nock from 'nock'
 import { mountFixture, unmountFixture } from '../spec/utils'
 import { submitForm, assertOnSubmit } from '../spec/utils'
-import makeFormRedirect from './makeFormRedirect'
+import { makeFormRedirect } from './makeFormRedirect'
 
 describe('makeFormRedirect.js', () => {
   const formkeepIdentifier = 'f3a748fed01a'

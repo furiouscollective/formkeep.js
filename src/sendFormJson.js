@@ -1,4 +1,4 @@
-export function sendFormJson(formkeepIdentifier, jsonData, config) {
+export const sendFormJson = (formkeepIdentifier, jsonData, config) => {
   const Xhr = new XMLHttpRequest()
   const url = `https://formkeep.com/f/${formkeepIdentifier}`
 
@@ -17,5 +17,3 @@ export function sendFormJson(formkeepIdentifier, jsonData, config) {
   Xhr.setRequestHeader('Content-Type', 'application/json')
   Xhr.send(JSON.stringify(jsonData))
 }
-
-export default sendFormJson

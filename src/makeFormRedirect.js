@@ -7,8 +7,6 @@ const handleSubmitWithRedirect = (form, config) => {
   form.appendChild(createHiddenInput('_redirect_url', redirectUrl))
 }
 
-const makeFormRedirect = (form, config) => {
+export const makeFormRedirect = (form, config) => {
   form.addEventListener('submit', () => handleSubmitWithRedirect(form, config))
 }
-
-export default makeFormRedirect

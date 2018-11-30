@@ -1,7 +1,7 @@
-import makeFormAsync from './makeFormAsync'
+import { makeFormAsync } from './makeFormAsync'
 import { buildJsonFromForm } from './utils'
 
-const makeFormShowSuccessTemplate = (form, identifier, config) => {
+export const makeFormShowSuccessTemplate = (form, identifier, config) => {
   makeFormAsync(form, identifier, {
     beforeSubmit: config.beforeSubmit,
     onFailure: config.onFailure,
@@ -15,5 +15,3 @@ const makeFormShowSuccessTemplate = (form, identifier, config) => {
     }
   })
 }
-
-export default makeFormShowSuccessTemplate

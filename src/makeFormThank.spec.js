@@ -1,7 +1,7 @@
 import nock from 'nock'
 import { mountFixture, unmountFixture } from '../spec/utils'
 import { submitForm, assertOnSubmit } from '../spec/utils'
-import makeFormThank from './makeFormThank'
+import { makeFormThank } from './makeFormThank'
 
 describe('makeFormThank.js', () => {
   const formkeepIdentifier = 'f3a748fed01a'

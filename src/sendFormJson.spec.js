@@ -1,5 +1,6 @@
 import xhrMock from 'xhr-mock'
-import sendFormJson from './sendFormJson'
+
+import { sendFormJson } from './sendFormJson'
 
 describe('sendFormJson.js', function() {
   const formkeepIdentifier = 'f3a748fed01a'

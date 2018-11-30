@@ -1,4 +1,4 @@
-import sendFormJson from './sendFormJson'
+import { sendFormJson } from './sendFormJson'
 import { buildJsonFromForm } from './utils'
 
 const handleSubmitAsync = (event, identifier, config) => {
@@ -20,8 +20,6 @@ const handleSubmitAsync = (event, identifier, config) => {
   sendFormJson(identifier, formJson, config)
 }
 
-const makeFormAsync = (form, identifier, config) => {
+export const makeFormAsync = (form, identifier, config) => {
   form.addEventListener('submit', (event) => handleSubmitAsync(event, identifier, config))
 }
-
-export default makeFormAsync
