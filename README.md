@@ -99,33 +99,6 @@ You can use this to dynamically add thanks params to the FormKeep thanks page
   - `setHeading(formJson: Object)`: a function that sets the heading for the thank you page. It is passed the form's data as a JSON object for convenience.
   - `setSubheading(formJson: Object)`: a function that sets the subheading for the thank you page. It is also passed the form's data as a JSON object.
 
-Example:
-
-```html
-  <!-- On your markup -->
-  <form id="test-form" action="https://formkeep.com/f/f3a748fed01a" method="POST">
-    <input type="hidden" name="utf8" value="✓" />
-    <input name="name" value="John Dowd" />
-    <input name="email" value="test@example.com" />
-    <button type="submit">Submit</button>
-  </form>
-```
-
-```javascript
-  // On your script
-  const Formkeep = window.Formkeep // or require('formkeep')
-
-  const form = document.getElementById('test-form')
-  Formkeep.makeFormThank(form, {
-    setHeading: formJson => (
-      `Thanks ${formJson.name}!`
-    ),
-    setSubheading: formJson => (
-      `We'll contact you at ${formJson.email}`
-    )
-  })
-```
-
 ##### makeFormRedirect(form: HTMLFormElement, config: Object)
 You can use this to dynamically add thanks params to the FormKeep thanks page
 - `form`: the form element you want to modify (it should be [set up to post to formkeep](linktodocs)).
@@ -151,6 +124,45 @@ Example:
   Formkeep.makeFormRedirect(form, {
     setRedirectUrl: formJson => (
       `https://example.com/greeting?name=${formJson.email}`
+    )
+  })
+```
+
+##### makeFormWithSuccessTemplate(form: HTMLFormElement, identifier, config: Object)
+You can use this to show a message after the form is submitted.
+- `form`: the form element you want to modify.
+- `formkeepIdentifier`: the id of the form to post.
+In addition to calling the function with your form, you can provide a template with a `data-formkeep-success` attribute, and it will replace any element you give a `data-formkeep-replace` attribute.
+
+Example:
+
+```html
+  <!-- On your markup -->
+  <div data-formkeep-replace="f3a748fed01a"></div>
+  <form data-formkeep="f3a748fed01a">
+    <input type="hidden" name="utf8" value="✓" />
+    <input name="name" value="John Dowd" />
+    <input name="email" value="test@example.com" />
+    <button type="submit">Submit</button>
+  </form>
+  <template data-formkeep-success="f3a748fed01a">
+    <div>
+      Your form was successfully posted! We'll get back to you!
+    </div>
+  </template>
+```
+
+```javascript
+  // On your script
+  const Formkeep = window.Formkeep // or require('formkeep')
+
+  const form = document.getElementById('test-form')
+  Formkeep.makeFormThank(form, {
+    setHeading: formJson => (
+      `Thanks ${formJson.name}!`
+    ),
+    setSubheading: formJson => (
+      `We'll contact you at ${formJson.email}`
     )
   })
 ```

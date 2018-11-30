@@ -1,5 +1,5 @@
 import nock from 'nock'
-import { mountFixture, unmountFixture } from './spec/helpers/fixtureHelpers'
+import { mountFixture, unmountFixture } from './spec/utils'
 import * as Formkeep from './index'
 
 describe('index.js', () => {

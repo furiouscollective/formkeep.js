@@ -1,5 +1,5 @@
-import { mountFixture, unmountFixture } from '../spec/helpers/fixtureHelpers'
-import { submitForm } from '../spec/helpers/formHelpers'
+import { mountFixture, unmountFixture } from '../spec/utils'
+import { submitForm } from '../spec/utils'
 
 import makeFormAsync from './makeFormAsync'
 import sendFormJson from './sendFormJson'

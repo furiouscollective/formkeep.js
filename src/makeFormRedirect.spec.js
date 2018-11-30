@@ -1,6 +1,6 @@
 import nock from 'nock'
-import { mountFixture, unmountFixture } from '../spec/helpers/fixtureHelpers'
-import { submitForm, assertOnSubmit } from '../spec/helpers/formHelpers'
+import { mountFixture, unmountFixture } from '../spec/utils'
+import { submitForm, assertOnSubmit } from '../spec/utils'
 import makeFormRedirect from './makeFormRedirect'
 
 describe('makeFormRedirect.js', () => {
