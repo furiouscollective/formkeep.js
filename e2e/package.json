@@ -1,0 +1,15 @@
+{
+  "name": "formkeep_node_import",
+  "version": "1.0.0",
+  "main": "index.html",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel **/*.html"
+  },
+  "devDependencies": {
+    "parcel": "^1.10.3"
+  },
+  "dependencies": {
+    "formkeep.js": "^0.0.0"
+  }
+}

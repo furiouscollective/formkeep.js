@@ -1,0 +1,24 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/formkeep.js/dist/index.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        var form = document.getElementById('test-form')
+        Formkeep.makeFormRedirect(form, {
+          setRedirectUrl: function(formJson) {
+            return `http://example.com?email=${formJson.email}`
+          }
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <form id="test-form" action="https://formkeep.com/f/f3a748fed01a" method="POST">
+      <div id="info-box"></div>
+      <input type="hidden" name="utf8" value="✓" />
+      <input type="text" name="name" value="John Dowd" />
+      <input type="text" name="email" value="test@example.com" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

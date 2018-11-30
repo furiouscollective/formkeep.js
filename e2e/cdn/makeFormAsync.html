@@ -1,0 +1,34 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/formkeep.js/dist/index.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        var form = document.getElementById('test-form')
+        var formkeepIdentifier = 'f3a748fed01a'
+        var config = {
+          beforeSubmit: function(formJson) {
+            formJson.datePosted = '2018-11-28'
+            return formJson
+          },
+          onSuccess: function(response) {
+            document.getElementById('info-box').textContent = 'Submitted successfully'
+          },
+          onFailure: function(response) {
+            document.getElementById('info-box').textContent = 'Failed to submit'
+          }
+        }
+
+        Formkeep.makeFormAsync(form, formkeepIdentifier, config)
+      })
+    </script>
+  </head>
+  <body>
+    <form id="test-form">
+      <div id="info-box"></div>
+      <input type="hidden" name="utf8" value="✓" />
+      <input type="text" name="email" value="test@example.com" />
+      <textarea name="comments">I ❤️ FormKeep</textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
