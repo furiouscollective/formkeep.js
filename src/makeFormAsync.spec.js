@@ -13,62 +13,105 @@ describe('makeFormAsync.js', () => {
   const otherEmail = 'other@example.com'
   const comments = 'I ❤️ Formkeep'
 
-  beforeEach(() => {
-    mountFixture('makeFormAsync', `
-      <form id="test-form">
-        <input type="hidden" name="utf8" value="${utf8}" />
-        <input name="email" value="${email}" />
-        <textarea name="comments">${comments}</textarea>
-        <button type="submit">Submit</button>
-      </form>
-    `)
-    sendFormJson.mockReturnValue(true)
+  describe('without success template', () => {
+    beforeEach(() => {
+      mountFixture('makeFormAsync', `
+        <form id="test-form">
+          <input type="hidden" name="utf8" value="${utf8}" />
+          <input name="email" value="${email}" />
+          <textarea name="comments">${comments}</textarea>
+          <button type="submit">Submit</button>
+        </form>
+      `)
+      sendFormJson.mockReturnValue(true)
+    })
+
+    afterEach(() => {
+      unmountFixture('makeFormAsync')
+      sendFormJson.mockReset()
+    })
+
+    it('sends the correct data and configs to `sendForm`', () => {
+      const form = document.getElementById('test-form')
+      const config = {
+        beforeSubmit: (formJson) => (formJson),
+        onSuccess: (response) => (response),
+        onFailure: (response) => (response)
+      }
+
+      makeFormAsync(form, formkeepIdentifier, config)
+      submitForm(form)
+
+      expect(sendFormJson).toBeCalledWith(
+        formkeepIdentifier,
+        { utf8, email, comments },
+        config
+      )
+    })
+
+    it('allows modifying the data in the `beforeSubmit` callback', () => {
+      const form = document.getElementById('test-form')
+      const config = { beforeSubmit: (formJson) => (Object.assign(formJson, { email: otherEmail})) }
+
+      makeFormAsync(form, formkeepIdentifier, config)
+      submitForm(form)
+
+      expect(sendFormJson).toBeCalledWith(
+        formkeepIdentifier,
+        { utf8, email: otherEmail, comments },
+        config
+      )
+    })
+
+    it("doesn't send the form if `beforeSubmit` returns `false`", () => {
+      const form = document.getElementById('test-form')
+      const config = { beforeSubmit: formJson => false }
+
+      makeFormAsync(form, formkeepIdentifier, config)
+      submitForm(form)
+
+      expect(sendFormJson).not.toBeCalled()
+    })
   })
 
-  afterEach(() => {
-    unmountFixture('makeFormAsync')
-    sendFormJson.mockReset()
-  })
+  describe('with success template', () => {
+    beforeEach(() => {
+      mountFixture('makeFormAsync', `
+        <form id="test-form">
+          <input type="hidden" name="utf8" value="${utf8}" />
+          <input name="email" value="${email}" />
+          <textarea name="comments">${comments}</textarea>
+          <button type="submit">Submit</button>
 
-  it('sends the correct data and configs to `sendForm`', () => {
-    const form = document.getElementById('test-form')
-    const config = {
-      beforeSubmit: (formJson) => (formJson),
-      onSuccess: (response) => (response),
-      onFailure: (response) => (response)
-    }
+        </form>
 
-    makeFormAsync(form, formkeepIdentifier, config)
-    submitForm(form)
+        <template data-formkeep-success-template="${formkeepIdentifier}" data-target="#test-form">
+          <span id="success-text">Your form has been successfully submitted, we'll get back to you</span>
+        </template>
+      `)
+      sendFormJson.mockReturnValue(true)
+    })
 
-    expect(sendFormJson).toBeCalledWith(
-      formkeepIdentifier,
-      { utf8, email, comments },
-      config
-    )
-  })
+    afterEach(() => {
+      unmountFixture('makeFormAsync')
+      sendFormJson.mockReset()
+    })
 
-  it('allows modifying the data in the `beforeSubmit` callback', () => {
-    const form = document.getElementById('test-form')
-    const config = { beforeSubmit: (formJson) => (Object.assign(formJson, { email: otherEmail})) }
+    it('replaces the form with the given template', (done) => {
+      sendFormJson.mockImplementation((_id, _json, config) => {
+        config.onSuccess()
+      })
+      const form = document.getElementById('test-form')
 
-    makeFormAsync(form, formkeepIdentifier, config)
-    submitForm(form)
+      makeFormAsync(form, formkeepIdentifier, {
+        onSuccess: () => {
+          expect(document.getElementById('success-text').textContent)
+          .toEqual("Your form has been successfully submitted, we'll get back to you")
+          done()
+        }
+      })
 
-    expect(sendFormJson).toBeCalledWith(
-      formkeepIdentifier,
-      { utf8, email: otherEmail, comments },
-      config
-    )
-  })
-
-  it("doesn't send the form if `beforeSubmit` returns `false`", () => {
-    const form = document.getElementById('test-form')
-    const config = { beforeSubmit: formJson => false }
-
-    makeFormAsync(form, formkeepIdentifier, config)
-    submitForm(form)
-
-    expect(sendFormJson).not.toBeCalled()
+      submitForm(form)
+    })
   })
 })
