@@ -11,7 +11,7 @@ This library offers a few methods to post data to FormKeep using AJAX, so you ca
 - `yarn add formkeep`
 - Then use in your code with:
   ```javascript
-    const Formkeep = require('formkeep')
+    const FormKeep = require('formkeep')
   ```
 
 #### Import globally *NOT PUBLISHED*
@@ -21,7 +21,7 @@ This library offers a few methods to post data to FormKeep using AJAX, so you ca
   ```
 - Use in your code with:
   ```javascript
-    const Formkeep = window.Formkeep
+    const FormKeep = window.FormKeep
   ```
 
 #### API
@@ -36,7 +36,7 @@ You can use it to easily post JSON data to a FormKeep form
 
 Example:
 ```javascript
-  const Formkeep = window.Formkeep // or require('formkeep')
+  const FormKeep = window.FormKeep // or require('formkeep')
 
   FormKeep.sendForm('bbac7724', { name: 'Barney', email: 'awesome@legendary.com' }, {
     onSuccess: () => {
@@ -69,7 +69,7 @@ Example:
 
 ```javascript
   // On your script
-  const Formkeep = window.Formkeep // or require('formkeep')
+  const FormKeep = window.FormKeep // or require('formkeep')
 
   const form = document.getElementById('example-form')
 
@@ -118,10 +118,10 @@ Example:
 
 ```javascript
   // On your script
-  const Formkeep = window.Formkeep // or require('formkeep')
+  const FormKeep = window.FormKeep // or require('formkeep')
 
   const form = document.getElementById('test-form')
-  Formkeep.redirectForm(form, {
+  FormKeep.redirectForm(form, {
     setRedirectUrl: formJson => (
       `https://example.com/greeting?name=${formJson.email}`
     )
@@ -154,10 +154,10 @@ Example:
 
 ```javascript
   // On your script
-  const Formkeep = window.Formkeep // or require('formkeep')
+  const FormKeep = window.FormKeep // or require('formkeep')
 
   const form = document.getElementById('test-form')
-  Formkeep.thanksForm(form, {
+  FormKeep.thanksForm(form, {
     setHeading: formJson => (
       `Thanks ${formJson.name}!`
     ),

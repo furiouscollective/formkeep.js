@@ -11,7 +11,7 @@ describe('asyncForm.js', () => {
   const utf8 = '✓'
   const email = 'test@example.com'
   const otherEmail = 'other@example.com'
-  const comments = 'I ❤️ Formkeep'
+  const comments = 'I ❤️ FormKeep'
 
   describe('without success template', () => {
     beforeEach(() => {

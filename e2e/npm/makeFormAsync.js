@@ -1,4 +1,4 @@
-const Formkeep = require('formkeep.js').default
+const FormKeep = require('formkeep.js').default
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('test-form')
@@ -16,5 +16,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  Formkeep.asyncForm(form, formkeepIdentifier, config)
+  FormKeep.asyncForm(form, formkeepIdentifier, config)
 })

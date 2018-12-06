@@ -1,6 +1,6 @@
 import { post } from 'formkeep.js'
 
-const saveToFormkeep = position => {
+const saveToFormKeep = position => {
   const location = {
     latitude: position.coords.latitude,
     longitude: position.coords.longitude
@@ -15,7 +15,7 @@ const saveToFormkeep = position => {
 }
 
 const saveLocation = () => {
-  navigator.geolocation.getCurrentPosition(saveToFormkeep)
+  navigator.geolocation.getCurrentPosition(saveToFormKeep)
 }
 
 document.addEventListener('DOMContentLoaded', () => {

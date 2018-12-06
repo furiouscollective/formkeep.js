@@ -9,7 +9,7 @@ describe('autoloadAsyncForms.js', () => {
   const formkeepIdentifier = 'f3a748fed01a'
   const utf8 = '✓'
   const email = 'test@example.com'
-  const comments = 'I ❤️ Formkeep'
+  const comments = 'I ❤️ FormKeep'
 
   beforeEach(() => {
     mountFixture('autoloadAsyncForms', `

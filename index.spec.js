@@ -1,6 +1,6 @@
 import nock from 'nock'
 import { mountFixture, unmountFixture } from './spec/utils'
-import * as Formkeep from './index'
+import * as FormKeep from './index'
 
 describe('index.js', () => {
   const formFixture = `
@@ -28,10 +28,10 @@ describe('index.js', () => {
         document.getElementById('info-box').textContent = 'Failed to submit'
       }
     }
-    Formkeep.asyncForm(form, formkeepIdentifier, config)
+    FormKeep.asyncForm(form, formkeepIdentifier, config)
   }
 
-  const mockFormkeep = () => (
+  const mockFormKeep = () => (
     nock('https://formkeep.com')
     .defaultReplyHeaders({ 'access-control-allow-origin': '*' })
     .post('/f/f3a748fed01a')
@@ -53,7 +53,7 @@ describe('index.js', () => {
   })
 
   it('shows a success message when the form is submitted', (done) => {
-    const httpRequestMock = mockFormkeep().reply(200, 'OK')
+    const httpRequestMock = mockFormKeep().reply(200, 'OK')
 
     clickSubmit()
 
@@ -65,7 +65,7 @@ describe('index.js', () => {
   })
 
   it('shows a failure message if the form fails to post', (done) => {
-    const httpRequestMock = mockFormkeep().reply(400, 'FAILED')
+    const httpRequestMock = mockFormKeep().reply(400, 'FAILED')
 
     clickSubmit()
 

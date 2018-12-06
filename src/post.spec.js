@@ -7,7 +7,7 @@ describe('post.js', function() {
   const url = `https://formkeep.com/f/${formkeepIdentifier}`
   const jsonData = {
     email: 'test@example.com',
-    comments: 'I ❤️ Formkeep'
+    comments: 'I ❤️ FormKeep'
   }
 
   beforeEach(() => { xhrMock.setup() })
