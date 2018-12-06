@@ -15,6 +15,10 @@ export const post = (formkeepIdentifier, jsonData, config = {}) => {
           reject(response)
         }
       })
+
+      Xhr.addEventListener('error', (error) => {
+        reject(error)
+      })
     })
   } else {
     Xhr.addEventListener('load', (response) => {
@@ -25,6 +29,10 @@ export const post = (formkeepIdentifier, jsonData, config = {}) => {
       if (Xhr.status >= 400 && Xhr.status < 600) {
         config.onFailure && config.onFailure(response)
       }
+    })
+
+    Xhr.addEventListener('error', (error) => {
+      config.onFailure && config.onFailure(error)
     })
   }
 

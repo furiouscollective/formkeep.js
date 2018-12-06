@@ -36,20 +36,6 @@ describe('post.js', function() {
     })
   })
 
-  it('returns a promise if no callbacks are given with a successful post', (done) => {
-    xhrMock.post(url, (_req, res) => (res.status(201).body(JSON.stringify(jsonData))))
-
-    post(formkeepIdentifier, jsonData)
-    .then(() => { done() })
-  })
-
-  it('returns a promise if no callbacks are given with a failed post', (done) => {
-    xhrMock.post(url, (_req, res) => (res.status(404).body(JSON.stringify(jsonData))))
-
-    post(formkeepIdentifier, jsonData)
-    .catch(() => { done() })
-  })
-
   it('calls the success callback on 200 responses', (done) => {
     xhrMock.post(url, (_req, res) => (res.status(201).body(JSON.stringify(jsonData))))
 
@@ -79,6 +65,14 @@ describe('post.js', function() {
 
     post(formkeepIdentifier, jsonData, {
       onFailure: (_response) => { done() }
+    })
+  })
+
+  it('calls the failure callback on xhr errors', (done) => {
+    xhrMock.post(url, () => Promise.reject())
+
+    post(formkeepIdentifier, jsonData, {
+      onFailure: (_error) => { done() }
     })
   })
 })
