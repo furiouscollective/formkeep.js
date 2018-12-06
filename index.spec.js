@@ -28,7 +28,7 @@ describe('index.js', () => {
         document.getElementById('info-box').textContent = 'Failed to submit'
       }
     }
-    Formkeep.makeFormAsync(form, formkeepIdentifier, config)
+    Formkeep.asyncForm(form, formkeepIdentifier, config)
   }
 
   const mockFormkeep = () => (
@@ -44,12 +44,12 @@ describe('index.js', () => {
   )
 
   beforeEach(() => {
-    mountFixture('makeFormAsync', formFixture)
+    mountFixture('asyncForm', formFixture)
     setUpForm()
   })
 
   afterEach(() => {
-    unmountFixture('makeFormAsync')
+    unmountFixture('asyncForm')
   })
 
   it('shows a success message when the form is submitted', (done) => {

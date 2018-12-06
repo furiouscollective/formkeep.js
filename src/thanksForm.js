@@ -8,6 +8,6 @@ const handleSubmitWithThanks = (form, config) => {
   form.appendChild(createHiddenInput('_redirect_url', buildThanksUrl(heading, subheading)))
 }
 
-export const makeFormThank = (form, config) => {
+export const thanksForm = (form, config) => {
   form.addEventListener('submit', () => handleSubmitWithThanks(form, config))
 }

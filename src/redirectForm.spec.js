@@ -1,13 +1,13 @@
 import nock from 'nock'
 import { mountFixture, unmountFixture } from '../spec/utils'
 import { submitForm, assertOnSubmit } from '../spec/utils'
-import { makeFormRedirect } from './makeFormRedirect'
+import { redirectForm } from './redirectForm'
 
-describe('makeFormRedirect.js', () => {
+describe('redirectForm.js', () => {
   const formkeepIdentifier = 'f3a748fed01a'
 
   beforeEach(() => {
-    mountFixture('makeFormRedirect', `
+    mountFixture('redirectForm', `
       <form id="test-form" action="https://formkeep.com/f/f3a748fed01a" method="POST">
         <input type="hidden" name="utf8" value="✓" />
         <input name="name" value="John Dowd" />
@@ -18,12 +18,12 @@ describe('makeFormRedirect.js', () => {
   })
 
   afterEach(() => {
-    unmountFixture('makeFormRedirect')
+    unmountFixture('redirectForm')
   })
 
   it('adds the thank you params to the posted form', (done) => {
     const form = document.getElementById('test-form')
-    makeFormRedirect(form, {
+    redirectForm(form, {
       setRedirectUrl: formJson => (
         `https://example.com/greeting?name=${formJson.email}`
       )

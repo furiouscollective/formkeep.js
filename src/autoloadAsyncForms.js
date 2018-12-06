@@ -1,9 +1,9 @@
-import { makeFormAsync } from './makeFormAsync'
+import { asyncForm } from './asyncForm'
 
 document.addEventListener('DOMContentLoaded', () => {
   const formkeepForms = document.querySelectorAll('[data-formkeep-id]')
 
   formkeepForms.forEach(form => {
-    makeFormAsync(form, form.getAttribute('data-formkeep-id'))
+    asyncForm(form, form.getAttribute('data-formkeep-id'))
   })
 })

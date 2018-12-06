@@ -1,4 +1,4 @@
-import { sendFormJson } from 'formkeep.js'
+import { post } from 'formkeep.js'
 
 const saveToFormkeep = position => {
   const location = {
@@ -6,7 +6,7 @@ const saveToFormkeep = position => {
     longitude: position.coords.longitude
   }
 
-  sendFormJson('f3a748fed01a', location, {
+  post('f3a748fed01a', location, {
     onSuccess: () => {
       document.getElementById('info-box')
       .textContent = `Saved your position (${location.latitude}, ${location.longitude})`

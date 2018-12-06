@@ -1,9 +1,9 @@
 import { mountFixture, unmountFixture } from '../spec/utils'
 
 import './autoloadAsyncForms'
-import { makeFormAsync } from './makeFormAsync'
+import { asyncForm } from './asyncForm'
 
-jest.mock('./makeFormAsync')
+jest.mock('./asyncForm')
 
 describe('autoloadAsyncForms.js', () => {
   const formkeepIdentifier = 'f3a748fed01a'
@@ -20,12 +20,12 @@ describe('autoloadAsyncForms.js', () => {
         <button type="submit">Submit</button>
       </form>
     `)
-    makeFormAsync.mockReturnValue(true)
+    asyncForm.mockReturnValue(true)
   })
 
   afterEach(() => {
     unmountFixture('autoloadAsyncForms')
-    makeFormAsync.mockReset()
+    asyncForm.mockReset()
   })
 
   it('makes the form async', () => {
@@ -33,6 +33,6 @@ describe('autoloadAsyncForms.js', () => {
 
     const form = document.getElementById('test-form')
 
-    expect(makeFormAsync).toHaveBeenCalledWith(form, formkeepIdentifier)
+    expect(asyncForm).toHaveBeenCalledWith(form, formkeepIdentifier)
   })
 })

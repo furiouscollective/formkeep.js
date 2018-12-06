@@ -1,4 +1,4 @@
-export const sendFormJson = (formkeepIdentifier, jsonData, config = {}) => {
+export const post = (formkeepIdentifier, jsonData, config = {}) => {
   const Xhr = new XMLHttpRequest()
   const url = `https://formkeep.com/f/${formkeepIdentifier}`
 

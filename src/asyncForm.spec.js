@@ -1,12 +1,12 @@
 import { mountFixture, unmountFixture } from '../spec/utils'
 import { submitForm } from '../spec/utils'
 
-import { makeFormAsync } from './makeFormAsync'
-import { sendFormJson } from './sendFormJson'
+import { asyncForm } from './asyncForm'
+import { post } from './post'
 
-jest.mock('./sendFormJson')
+jest.mock('./post')
 
-describe('makeFormAsync.js', () => {
+describe('asyncForm.js', () => {
   const formkeepIdentifier = 'f3a748fed01a'
   const utf8 = '✓'
   const email = 'test@example.com'
@@ -15,7 +15,7 @@ describe('makeFormAsync.js', () => {
 
   describe('without success template', () => {
     beforeEach(() => {
-      mountFixture('makeFormAsync', `
+      mountFixture('asyncForm', `
         <form id="test-form">
           <input type="hidden" name="utf8" value="${utf8}" />
           <input name="email" value="${email}" />
@@ -23,12 +23,12 @@ describe('makeFormAsync.js', () => {
           <button type="submit">Submit</button>
         </form>
       `)
-      sendFormJson.mockReturnValue(true)
+      post.mockReturnValue(true)
     })
 
     afterEach(() => {
-      unmountFixture('makeFormAsync')
-      sendFormJson.mockReset()
+      unmountFixture('asyncForm')
+      post.mockReset()
     })
 
     it('sends the correct data and configs to `sendForm`', () => {
@@ -39,10 +39,10 @@ describe('makeFormAsync.js', () => {
         onFailure: (response) => (response)
       }
 
-      makeFormAsync(form, formkeepIdentifier, config)
+      asyncForm(form, formkeepIdentifier, config)
       submitForm(form)
 
-      expect(sendFormJson).toBeCalledWith(
+      expect(post).toBeCalledWith(
         formkeepIdentifier,
         { utf8, email, comments },
         config
@@ -53,10 +53,10 @@ describe('makeFormAsync.js', () => {
       const form = document.getElementById('test-form')
       const config = { beforeSubmit: (formJson) => (Object.assign(formJson, { email: otherEmail})) }
 
-      makeFormAsync(form, formkeepIdentifier, config)
+      asyncForm(form, formkeepIdentifier, config)
       submitForm(form)
 
-      expect(sendFormJson).toBeCalledWith(
+      expect(post).toBeCalledWith(
         formkeepIdentifier,
         { utf8, email: otherEmail, comments },
         config
@@ -67,16 +67,16 @@ describe('makeFormAsync.js', () => {
       const form = document.getElementById('test-form')
       const config = { beforeSubmit: formJson => false }
 
-      makeFormAsync(form, formkeepIdentifier, config)
+      asyncForm(form, formkeepIdentifier, config)
       submitForm(form)
 
-      expect(sendFormJson).not.toBeCalled()
+      expect(post).not.toBeCalled()
     })
   })
 
   describe('with success template', () => {
     beforeEach(() => {
-      mountFixture('makeFormAsync', `
+      mountFixture('asyncForm', `
         <form id="test-form">
           <input type="hidden" name="utf8" value="${utf8}" />
           <input name="email" value="${email}" />
@@ -89,21 +89,21 @@ describe('makeFormAsync.js', () => {
           <span id="success-text">Your form has been successfully submitted, we'll get back to you</span>
         </template>
       `)
-      sendFormJson.mockReturnValue(true)
+      post.mockReturnValue(true)
     })
 
     afterEach(() => {
-      unmountFixture('makeFormAsync')
-      sendFormJson.mockReset()
+      unmountFixture('asyncForm')
+      post.mockReset()
     })
 
     it('replaces the form with the given template', (done) => {
-      sendFormJson.mockImplementation((_id, _json, config) => {
+      post.mockImplementation((_id, _json, config) => {
         config.onSuccess()
       })
       const form = document.getElementById('test-form')
 
-      makeFormAsync(form, formkeepIdentifier, {
+      asyncForm(form, formkeepIdentifier, {
         onSuccess: () => {
           expect(document.getElementById('success-text').textContent)
           .toEqual("Your form has been successfully submitted, we'll get back to you")

@@ -16,5 +16,5 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  Formkeep.makeFormAsync(form, formkeepIdentifier, config)
+  Formkeep.asyncForm(form, formkeepIdentifier, config)
 })

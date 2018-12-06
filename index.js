@@ -1,7 +1,6 @@
-export { sendFormJson } from './src/sendFormJson'
-export { makeFormAsync } from './src/makeFormAsync'
-export { makeFormThank } from './src/makeFormThank'
-export { makeFormRedirect } from './src/makeFormRedirect'
-export { makeFormShowSucccessTemplate } from './src/makeFormRedirect'
+export { post } from './src/post'
+export { asyncForm } from './src/asyncForm'
+export { thanksForm } from './src/thanksForm'
+export { redirectForm } from './src/redirectForm'
 
-// import './src/autoloadAsyncForm'
+import './src/autoloadAsyncForms'

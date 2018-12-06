@@ -26,7 +26,7 @@ This library offers a few methods to post data to FormKeep using AJAX, so you ca
 
 #### API
 
-##### sendFormJson(formkeepIdentifier: string, formJson: Object, options: Object | null)
+##### post(formkeepIdentifier: string, formJson: Object, options: Object | null)
 You can use it to easily post JSON data to a FormKeep form
 - `formkeepIdentifier`: your form's unique identifier (you can find it in your FormKeep dashboard)
 - `formJson`: a JSON object with the data you want to post
@@ -48,7 +48,7 @@ Example:
   })
 ```
 
-##### makeFormAsync(form: HTMLFormElement, options: Object | null)
+##### asyncForm(form: HTMLFormElement, options: Object | null)
 You can use this to make any form post to FormKeep using AJAX, so you can handle what to do afterwards.
 - `form`: the form element you want to post through AJAX.
 - `formkeepIdentifier`: the id of the form to post.
@@ -73,7 +73,7 @@ Example:
 
   const form = document.getElementById('example-form')
 
-  FormKeep.makeFormAsync(form, {
+  FormKeep.asyncForm(form, {
     formkeepIdentifier: 'bac7724',
     beforeSubmit: (formJson) => {
       if (!form.querySelector('input[name=email]').value.includes('@')) {
@@ -92,14 +92,14 @@ Example:
   })
 ```
 
-##### makeFormThank(form: HTMLFormElement, config: Object)
+##### thanksForm(form: HTMLFormElement, config: Object)
 You can use this to dynamically add thanks params to the FormKeep thanks page
 - `form`: the form element you want to modify (it should be [set up to post to formkeep](linktodocs)).
 - `options`:
   - `setHeading(formJson: Object)`: a function that sets the heading for the thank you page. It is passed the form's data as a JSON object for convenience.
   - `setSubheading(formJson: Object)`: a function that sets the subheading for the thank you page. It is also passed the form's data as a JSON object.
 
-##### makeFormRedirect(form: HTMLFormElement, config: Object)
+##### redirectForm(form: HTMLFormElement, config: Object)
 You can use this to dynamically add thanks params to the FormKeep thanks page
 - `form`: the form element you want to modify (it should be [set up to post to formkeep](linktodocs)).
 - `options`:
@@ -121,7 +121,7 @@ Example:
   const Formkeep = window.Formkeep // or require('formkeep')
 
   const form = document.getElementById('test-form')
-  Formkeep.makeFormRedirect(form, {
+  Formkeep.redirectForm(form, {
     setRedirectUrl: formJson => (
       `https://example.com/greeting?name=${formJson.email}`
     )
@@ -157,7 +157,7 @@ Example:
   const Formkeep = window.Formkeep // or require('formkeep')
 
   const form = document.getElementById('test-form')
-  Formkeep.makeFormThank(form, {
+  Formkeep.thanksForm(form, {
     setHeading: formJson => (
       `Thanks ${formJson.name}!`
     ),
