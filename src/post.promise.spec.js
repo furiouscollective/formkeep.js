@@ -26,11 +26,4 @@ describe('post.js (without callbacks)', function() {
     post(formkeepIdentifier, jsonData)
     .catch(() => { done() })
   })
-
-  it('rejects on xhr errors', (done) => {
-    xhrMock.post(url, () => Promise.reject())
-
-    post(formkeepIdentifier, jsonData)
-    .catch(() => { done() })
-  })
 })

@@ -20,7 +20,7 @@ describe('post.js', function() {
     })
 
     post(formkeepIdentifier, jsonData, {
-      onSuccess: (_response) => { done() }
+      onSuccess: (_result) => { done() }
     })
   })
 
@@ -32,47 +32,40 @@ describe('post.js', function() {
     })
 
     post(formkeepIdentifier, jsonData, {
-      onSuccess: (_response) => { done() }
+      onSuccess: (_result) => { done() }
     })
   })
 
   it('calls the success callback on 200 responses', (done) => {
-    xhrMock.post(url, (_req, res) => (res.status(201).body(JSON.stringify(jsonData))))
+    xhrMock.post(url, (_req, res) => (res.status(200).statusText('OK')))
 
     post(formkeepIdentifier, jsonData, {
-      onSuccess: (_response) => { done() }
-    })
-  })
-
-  it('calls the success callback on 300 responses', (done) => {
-    xhrMock.post(url, (_req, res) => (res.status(301).body(JSON.stringify(jsonData))))
-
-    post(formkeepIdentifier, jsonData, {
-      onSuccess: (_response) => { done() }
+      onSuccess: (result) => {
+        expect(result).toEqual({ status: 200, text: 'OK' })
+        done()
+      }
     })
   })
 
   it('calls the failure callback on 400 responses', (done) => {
-    xhrMock.post(url, (_req, res) => (res.status(404)))
+    xhrMock.post(url, (_req, res) => (res.status(403).statusText('FORBIDDEN')))
 
     post(formkeepIdentifier, jsonData, {
-      onFailure: (_response) => { done() }
+      onFailure: (result) => {
+        expect(result).toEqual({ status: 200, text: 'FORBIDDEN' })
+        done()
+      }
     })
   })
 
-  it('calls the failure callback on 500 responses', (done) => {
-    xhrMock.post(url, (_req, res) => (res.status(501)))
+  it('calls the failure callback on 501 responses', (done) => {
+    xhrMock.post(url, (_req, res) => (res.status(501).statuText('ERROR')))
 
     post(formkeepIdentifier, jsonData, {
-      onFailure: (_response) => { done() }
-    })
-  })
-
-  it('calls the failure callback on xhr errors', (done) => {
-    xhrMock.post(url, () => Promise.reject())
-
-    post(formkeepIdentifier, jsonData, {
-      onFailure: (_error) => { done() }
+      onFailure: (_result) => {
+        expect(result).toEqual({ status: 501, text: 'ERROR' })
+        done()
+      }
     })
   })
 })

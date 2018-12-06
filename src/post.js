@@ -1,3 +1,8 @@
+const getResult = ({ status, statusText }) => ({
+  status,
+  text: statusText
+})
+
 export const post = (formkeepIdentifier, jsonData, config = {}) => {
   const Xhr = new XMLHttpRequest()
   const url = `https://formkeep.com/f/${formkeepIdentifier}`
@@ -6,33 +11,33 @@ export const post = (formkeepIdentifier, jsonData, config = {}) => {
 
   if (!(config.onSuccess || config.onFailure)) {
     result = new Promise((resolve, reject) => {
-      Xhr.addEventListener('load', (response) => {
+      Xhr.addEventListener('load', () => {
         if (Xhr.status >= 200 && Xhr.status < 400) {
-          resolve(response)
+          resolve(getResult(Xhr))
         }
 
         if (Xhr.status >= 400 && Xhr.status < 600) {
-          reject(response)
+          reject(getResult(Xhr))
         }
       })
 
-      Xhr.addEventListener('error', (error) => {
-        reject(error)
+      Xhr.addEventListener('error', () => {
+        reject(getResult(Xhr))
       })
     })
   } else {
-    Xhr.addEventListener('load', (response) => {
+    Xhr.addEventListener('load', () => {
       if (Xhr.status >= 200 && Xhr.status < 400) {
-        config.onSuccess && config.onSuccess(response)
+        config.onSuccess && config.onSuccess(getResult(Xhr))
       }
 
       if (Xhr.status >= 400 && Xhr.status < 600) {
-        config.onFailure && config.onFailure(response)
+        config.onFailure && config.onFailure(getResult(Xhr))
       }
     })
 
-    Xhr.addEventListener('error', (error) => {
-      config.onFailure && config.onFailure(error)
+    Xhr.addEventListener('error', () => {
+      config.onFailure && config.onFailure(getResult(Xhr))
     })
   }
 
@@ -41,5 +46,5 @@ export const post = (formkeepIdentifier, jsonData, config = {}) => {
   Xhr.setRequestHeader('Content-Type', 'application/json')
   Xhr.send(JSON.stringify(jsonData))
 
-  return result;
+  return result
 }
