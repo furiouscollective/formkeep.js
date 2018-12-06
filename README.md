@@ -38,7 +38,7 @@ Example:
 ```javascript
   const FormKeep = window.FormKeep // or require('formkeep')
 
-  FormKeep.sendForm('bbac7724', { name: 'Barney', email: 'awesome@legendary.com' }, {
+  FormKeep.sendForm('<YOUR_FORM_IDENTIFIER>', { name: 'Barney', email: 'awesome@legendary.com' }, {
     onSuccess: () => {
       window.alert('Successfully posted!')
     },
@@ -74,7 +74,7 @@ Example:
   const form = document.getElementById('example-form')
 
   FormKeep.asyncForm(form, {
-    formkeepIdentifier: 'bac7724',
+    formkeepIdentifier: '<YOUR_FORM_IDENTIFIER>',
     beforeSubmit: (formJson) => {
       if (!form.querySelector('input[name=email]').value.includes('@')) {
         return false
@@ -109,7 +109,7 @@ Example:
 
 ```html
   <!-- On your markup -->
-  <form id="test-form" action="https://formkeep.com/f/f3a748fed01a" method="POST">
+  <form id="test-form" action="https://formkeep.com/f/<YOUR_FORM_IDENTIFIER>" method="POST">
     <input type="hidden" name="utf8" value="✓" />
     <input name="email" value="test@example.com" />
     <button type="submit">Submit</button>
@@ -138,14 +138,14 @@ Example:
 
 ```html
   <!-- On your markup -->
-  <div data-formkeep-replace="f3a748fed01a"></div>
-  <form data-formkeep="f3a748fed01a">
+  <div data-formkeep-replace="<YOUR_FORM_IDENTIFIER>"></div>
+  <form data-formkeep="<YOUR_FORM_IDENTIFIER>">
     <input type="hidden" name="utf8" value="✓" />
     <input name="name" value="John Dowd" />
     <input name="email" value="test@example.com" />
     <button type="submit">Submit</button>
   </form>
-  <template data-formkeep-success="f3a748fed01a">
+  <template data-formkeep-success="<YOUR_FORM_IDENTIFIER>">
     <div>
       Your form was successfully posted! We'll get back to you!
     </div>
