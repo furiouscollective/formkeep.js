@@ -20,7 +20,7 @@ describe('post.js', function() {
     })
 
     post(formkeepIdentifier, jsonData, {
-      onSuccess: (response) => { done() }
+      onSuccess: (_response) => { done() }
     })
   })
 
@@ -32,39 +32,53 @@ describe('post.js', function() {
     })
 
     post(formkeepIdentifier, jsonData, {
-      onSuccess: (response) => { done() }
+      onSuccess: (_response) => { done() }
     })
   })
 
+  it('returns a promise if no callbacks are given with a successful post', (done) => {
+    xhrMock.post(url, (_req, res) => (res.status(201).body(JSON.stringify(jsonData))))
+
+    post(formkeepIdentifier, jsonData)
+    .then(() => { done() })
+  })
+
+  it('returns a promise if no callbacks are given with a failed post', (done) => {
+    xhrMock.post(url, (_req, res) => (res.status(404).body(JSON.stringify(jsonData))))
+
+    post(formkeepIdentifier, jsonData)
+    .catch(() => { done() })
+  })
+
   it('calls the success callback on 200 responses', (done) => {
-    xhrMock.post(url, (req, res) => (res.status(201).body(JSON.stringify(jsonData))))
+    xhrMock.post(url, (_req, res) => (res.status(201).body(JSON.stringify(jsonData))))
 
     post(formkeepIdentifier, jsonData, {
-      onSuccess: (response) => { done() }
+      onSuccess: (_response) => { done() }
     })
   })
 
   it('calls the success callback on 300 responses', (done) => {
-    xhrMock.post(url, (req, res) => (res.status(301).body(JSON.stringify(jsonData))))
+    xhrMock.post(url, (_req, res) => (res.status(301).body(JSON.stringify(jsonData))))
 
     post(formkeepIdentifier, jsonData, {
-      onSuccess: (response) => { done() }
+      onSuccess: (_response) => { done() }
     })
   })
 
   it('calls the failure callback on 400 responses', (done) => {
-    xhrMock.post(url, (req, res) => (res.status(404)))
+    xhrMock.post(url, (_req, res) => (res.status(404)))
 
     post(formkeepIdentifier, jsonData, {
-      onFailure: (response) => { done() }
+      onFailure: (_response) => { done() }
     })
   })
 
   it('calls the failure callback on 500 responses', (done) => {
-    xhrMock.post(url, (req, res) => (res.status(501)))
+    xhrMock.post(url, (_req, res) => (res.status(501)))
 
     post(formkeepIdentifier, jsonData, {
-      onFailure: (response) => { done() }
+      onFailure: (_response) => { done() }
     })
   })
 })

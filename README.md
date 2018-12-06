@@ -26,13 +26,13 @@ This library offers a few methods to post data to FormKeep using AJAX, so you ca
 
 #### API
 
-##### post(formkeepIdentifier: string, formJson: Object, options: Object | null)
-You can use it to easily post JSON data to a FormKeep form
+##### post(formkeepIdentifier: string, formJson: Object, options: Object | null): true | Promise
+You can use it to easily post JSON data to a FormKeep form. You can omit the onSuccess and onFailure callbacks and a Promise will be returned instead.
 - `formkeepIdentifier`: your form's unique identifier (you can find it in your FormKeep dashboard)
 - `formJson`: a JSON object with the data you want to post
 - `options`:
-  - `onSuccess` (this could probably be passed a param, either the response or the posted data) a function to call when the data is successfully posted to FormKeep.
-  - `onFailure` (this too could be passed a param) a function to call if posting the form fails (we should add why would this happen)
+  - `onSuccess [optional]` (this could probably be passed a param, either the response or the posted data) a function to call when the data is successfully posted to FormKeep.
+  - `onFailure [optional]` (this too could be passed a param) a function to call if posting the form fails (we should add why would this happen)
 
 Example:
 ```javascript
@@ -48,8 +48,8 @@ Example:
   })
 ```
 
-##### asyncForm(form: HTMLFormElement, options: Object | null)
-You can use this to make any form post to FormKeep using AJAX, so you can handle what to do afterwards.
+##### asyncForm(form: HTMLFormElement, options: Object | null): true | Promise
+You can use this to make any form post to FormKeep using AJAX, so you can handle what to do afterwards. You can omit the onSuccess and onFailure callbacks and a Promise will be returned instead.
 - `form`: the form element you want to post through AJAX.
 - `formkeepIdentifier`: the id of the form to post.
 - `options`:

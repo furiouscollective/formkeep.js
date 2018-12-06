@@ -29,7 +29,7 @@ const handleSubmitAsync = (event, identifier, config = {}) => {
   }
 
   // Submit form
-  post(identifier, formJson, successTemplateConfig)
+  return post(identifier, formJson, successTemplateConfig)
 }
 
 export const asyncForm = (form, identifier, config) => {
