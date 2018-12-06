@@ -6,20 +6,6 @@ export const buildJsonFromForm = form => (
   }, {})
 )
 
-export const buildThanksUrl = (heading, subheading) => {
-  const params = []
-
-  if (heading) {
-    params.push(heading)
-  }
-
-  if (subheading) {
-    params.push(subheading)
-  }
-
-  return `https://formkeep.com/thanks${params.length && '?'}${params.join('&')}`
-}
-
 export const createHiddenInput = (name, value) => {
   const input = document.createElement('input')
 
