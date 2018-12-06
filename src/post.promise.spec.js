@@ -14,14 +14,14 @@ describe('post.js (without callbacks)', function() {
   afterEach(() => { xhrMock.teardown() })
 
   it('resolves on a successful post', (done) => {
-    xhrMock.post(url, (_req, res) => (res.status(201).body(JSON.stringify(jsonData))))
+    xhrMock.post(url, (_req, res) => (res.status(201).reason('OK')))
 
     post(formkeepIdentifier, jsonData)
     .then(() => { done() })
   })
 
   it('rejects on a failed post', (done) => {
-    xhrMock.post(url, (_req, res) => (res.status(404).body(JSON.stringify(jsonData))))
+    xhrMock.post(url, (_req, res) => (res.status(403).reason('FORBIDDEN')))
 
     post(formkeepIdentifier, jsonData)
     .catch(() => { done() })

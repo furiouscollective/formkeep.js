@@ -37,7 +37,7 @@ describe('post.js', function() {
   })
 
   it('calls the success callback on 200 responses', (done) => {
-    xhrMock.post(url, (_req, res) => (res.status(200).statusText('OK')))
+    xhrMock.post(url, (_req, res) => (res.status(200).reason('OK')))
 
     post(formkeepIdentifier, jsonData, {
       onSuccess: (result) => {
@@ -48,21 +48,21 @@ describe('post.js', function() {
   })
 
   it('calls the failure callback on 400 responses', (done) => {
-    xhrMock.post(url, (_req, res) => (res.status(403).statusText('FORBIDDEN')))
+    xhrMock.post(url, (_req, res) => (res.status(403).reason('FORBIDDEN')))
 
     post(formkeepIdentifier, jsonData, {
       onFailure: (result) => {
-        expect(result).toEqual({ status: 200, text: 'FORBIDDEN' })
+        expect(result).toEqual({ status: 403, text: 'FORBIDDEN' })
         done()
       }
     })
   })
 
   it('calls the failure callback on 501 responses', (done) => {
-    xhrMock.post(url, (_req, res) => (res.status(501).statuText('ERROR')))
+    xhrMock.post(url, (_req, res) => (res.status(501).reason('ERROR')))
 
     post(formkeepIdentifier, jsonData, {
-      onFailure: (_result) => {
+      onFailure: (result) => {
         expect(result).toEqual({ status: 501, text: 'ERROR' })
         done()
       }
