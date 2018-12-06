@@ -7,9 +7,10 @@
     "start": "parcel **/*.html"
   },
   "devDependencies": {
+    "@babel/core": "^7.2.0",
     "parcel": "^1.10.3"
   },
   "dependencies": {
-    "formkeep.js": "^0.0.0"
+    "formkeep.js": "^0.0.4"
   }
 }
