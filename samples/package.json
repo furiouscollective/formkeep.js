@@ -1,6 +1,6 @@
 {
-  "name": "formkeep_node_import",
-  "version": "1.0.0",
+  "name": "formkeep-samples",
+  "version": "0.0.0",
   "main": "index.html",
   "license": "MIT",
   "scripts": {
@@ -11,6 +11,6 @@
     "parcel": "^1.10.3"
   },
   "dependencies": {
-    "formkeep.js": "^0.0.4"
+    "formkeep": "^0.0.0"
   }
 }

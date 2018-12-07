@@ -1,4 +1,4 @@
-const FormKeep = require('formkeep.js').default
+const FormKeep = require('formkeep').default
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('test-form')

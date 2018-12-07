@@ -1,4 +1,4 @@
-import { post } from 'formkeep.js'
+import { post } from 'formkeep'
 
 const saveToFormKeep = position => {
   const location = {

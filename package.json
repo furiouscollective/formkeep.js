@@ -1,10 +1,10 @@
 {
-  "name": "formkeep.js",
-  "version": "0.0.4",
+  "name": "formkeep",
+  "version": "0.0.0",
   "description": "FormKeep helpers for the browser",
   "main": "./dist/index.js",
   "author": "FormKeep",
-  "license": "UNLICENSED",
+  "license": "MIT",
   "scripts": {
     "test": "jest",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
