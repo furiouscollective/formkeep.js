@@ -15,3 +15,7 @@ export const createHiddenInput = (name, value) => {
 
   return input
 }
+
+export const createUtf8Input = () => {
+  return createHiddenInput('utf8', '✓')
+}

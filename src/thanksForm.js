@@ -1,4 +1,4 @@
-import { buildJsonFromForm, createHiddenInput } from './utils'
+import { buildJsonFromForm, createHiddenInput, createUtf8Input } from './utils'
 
 const buildThanksUrl = (heading, subheading) => {
   const params = []
@@ -16,9 +16,11 @@ const buildThanksUrl = (heading, subheading) => {
 
 const handleSubmitWithThanks = (form, config) => {
   const formJson = buildJsonFromForm(form)
+
   const heading = config.setHeading(formJson)
   const subheading = config.setSubheading(formJson)
 
+  form.appendChild(createUtf8Input())
   form.appendChild(createHiddenInput('_redirect_url', buildThanksUrl(heading, subheading)))
 }
 
