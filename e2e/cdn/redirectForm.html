@@ -6,7 +6,12 @@
         var form = document.getElementById('test-form')
         FormKeep.redirectForm(form, {
           setRedirectUrl: function(formJson) {
-            return `http://example.com?email=${formJson.email}`
+            if (formJson.site === 'google') {
+              return 'http://google.com'
+            }
+            if (formJson.site === 'apple') {
+              return 'http://apple.com'
+            }
           }
         })
       })
@@ -14,10 +19,22 @@
   </head>
   <body>
     <form id="test-form" action="https://formkeep.com/f/f3a748fed01a" method="POST">
-      <div id="info-box"></div>
-      <input type="hidden" name="utf8" value="✓" />
-      <input type="text" name="name" value="John Dowd" />
-      <input type="text" name="email" value="test@example.com" />
+      <div>
+        <input type="text" name="name" value="John Dowd" />
+      </div>
+      <div>
+        <input type="text" name="email" value="test@example.com" />
+      </div>
+
+      <div>
+        <input type="radio" name="site" value="google" checked>
+        <label for="huey">Take me to Google</label>
+      </div>
+      <div>
+        <input type="radio" name="site" value="apple">
+        <label for="dewey">Take me to Apple</label>
+      </div>
+
       <button type="submit">Submit</button>
     </form>
   </body>
