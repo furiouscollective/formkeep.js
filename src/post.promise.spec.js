@@ -3,7 +3,7 @@ import xhrMock from 'xhr-mock'
 import { post } from './post'
 
 describe('post.js (without callbacks)', function() {
-  const formkeepIdentifier = 'f3a748fed01a'
+  const formkeepIdentifier = 'exampletoken'
   const url = `https://formkeep.com/f/${formkeepIdentifier}`
   const jsonData = {
     email: 'test@example.com',

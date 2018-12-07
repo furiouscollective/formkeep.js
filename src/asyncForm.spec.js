@@ -7,7 +7,7 @@ import { post } from './post'
 jest.mock('./post')
 
 describe('asyncForm.js', () => {
-  const formkeepIdentifier = 'f3a748fed01a'
+  const formkeepIdentifier = 'exampletoken'
   const utf8 = '✓'
   const email = 'test@example.com'
   const otherEmail = 'other@example.com'

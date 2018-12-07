@@ -3,11 +3,11 @@ import { submitForm, assertOnSubmit } from '../spec/utils'
 import { thanksForm } from './thanksForm'
 
 describe('thanksForm.js', () => {
-  const formkeepIdentifier = 'f3a748fed01a'
+  const formkeepIdentifier = 'exampletoken'
 
   beforeEach(() => {
     mountFixture('thanksForm', `
-      <form id="test-form" action="https://formkeep.com/f/f3a748fed01a" method="POST">
+      <form id="test-form" action="https://formkeep.com/f/exampletoken" method="POST">
         <input name="name" value="John Dowd" />
         <input name="email" value="test@example.com" />
         <button type="submit">Submit</button>

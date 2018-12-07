@@ -5,7 +5,7 @@ import { redirectForm } from './redirectForm'
 describe('redirectForm.js', () => {
   beforeEach(() => {
     mountFixture('redirectForm', `
-      <form id="test-form" action="https://formkeep.com/f/f3a748fed01a" method="POST">
+      <form id="test-form" action="https://formkeep.com/f/exampletoken" method="POST">
         <input name="name" value="John Dowd" />
         <input name="email" value="test@example.com" />
         <button type="submit">Submit</button>
