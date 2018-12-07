@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <script src="https://unpkg.com/formkeep.js/dist/index.js"></script>
+  </head>
+  <body>
+    <form data-formkeep-id="exampletoken">
+      <div id="info-box"></div>
+      <input type="hidden" name="utf8" value="✓" />
+      <input type="text" name="email" value="test@example.com" />
+      <textarea name="comments">I ❤️ FormKeep</textarea>
+      <button type="submit">Submit</button>
+    </form>
+
+    <template data-formkeep-success-template="exampletoken">
+      <div>Submitted successfully!</div>
+    </template>
+  </body>
+</html>

@@ -41,6 +41,10 @@ This library offers a few methods to make it easier to add interactivity to Form
 
 ## Guide
 
+### Samples
+
+[Run live samples locally](./samples/README.md)
+
 ### Show a success message
 
 1. [Load the script](#without-a-bundler)
