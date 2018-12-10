@@ -19,7 +19,7 @@ This library offers a few methods to make it easier to add interactivity to Form
   ```
 - Use the `FormKeep` global variable:
   ```javascript
-    FormKeep.post('<YOUR_FORM_IDENTIFIER', { hello: 'world' })
+    FormKeep.post('<YOUR_FORM_IDENTIFIER>', { hello: 'world' })
   ```
 
 ## Contents
@@ -59,7 +59,7 @@ This library offers a few methods to make it easier to add interactivity to Form
   <!-- On your page -->
   <div id="example-success-notice"></div>
 
-  <form data-formkeep="<YOUR_FORM_IDENTIFIER>">
+  <form data-formkeep-id="<YOUR_FORM_IDENTIFIER>">
     <input type="hidden" name="utf8" value="✓" />
     <input name="name" value="John Dowd" />
     <input name="email" value="test@example.com" />
@@ -95,11 +95,11 @@ This library offers a few methods to make it easier to add interactivity to Form
   >
     <div>
       <input type="radio" name="site" value="google" checked>
-      <label for="huey">Take me to Google</label>
+      <label for="site">Take me to Google</label>
     </div>
     <div>
       <input type="radio" name="site" value="apple">
-      <label for="dewey">Take me to Apple</label>
+      <label for="site">Take me to Apple</label>
     </div>
 
     <button type="submit">Submit</button>
@@ -114,10 +114,10 @@ This library offers a few methods to make it easier to add interactivity to Form
     FormKeep.redirectForm(form, {
       setRedirectUrl: function(formJson) {
         if (formJson.site === 'google') {
-          return 'http://google.com'
+          return 'https://google.com'
         }
         if (formJson.site === 'apple') {
-          return 'http://apple.com'
+          return 'https://apple.com'
         }
       }
     })
