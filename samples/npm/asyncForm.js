@@ -2,7 +2,7 @@ const FormKeep = require('formkeep').default
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('test-form')
-  const formkeepIdentifier = 'exampletoken'
+  const formkeepIdentifier = '149105c7eb4a'
   const config = {
     beforeSubmit: (formJson) => {
       formJson.datePosted = '2018-11-28'

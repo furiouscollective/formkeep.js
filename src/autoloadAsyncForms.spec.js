@@ -6,7 +6,7 @@ import { asyncForm } from './asyncForm'
 jest.mock('./asyncForm')
 
 describe('autoloadAsyncForms.js', () => {
-  const formkeepIdentifier = 'exampletoken'
+  const formkeepIdentifier = '149105c7eb4a'
   const utf8 = '✓'
   const email = 'test@example.com'
   const comments = 'I ❤️ FormKeep'

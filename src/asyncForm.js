@@ -16,7 +16,7 @@ const handleSubmitAsync = (event, identifier, config = {}) => {
   if (formJson === false) { return }
 
   const successTemplateConfig = Object.assign({}, config)
-  const successTemplate = document.querySelector(`template[data-formkeep-success-template=${identifier}]`)
+  const successTemplate = document.querySelector(`template[data-formkeep-success-template="${identifier}"]`)
 
   // Decorate onSuccess to apply success template if template given
   if (successTemplate) {

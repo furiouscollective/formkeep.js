@@ -6,7 +6,7 @@ const saveToFormKeep = position => {
     longitude: position.coords.longitude
   }
 
-  post('exampletoken', location, {
+  post('149105c7eb4a', location, {
     onSuccess: () => {
       document.getElementById('info-box')
       .textContent = `Saved your position (${location.latitude}, ${location.longitude})`
