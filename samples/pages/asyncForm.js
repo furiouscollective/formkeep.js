@@ -1,4 +1,4 @@
-const FormKeep = require('formkeep').default
+const FormKeep = require('@formkeep/formkeep')
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('test-form')
@@ -8,10 +8,10 @@ document.addEventListener('DOMContentLoaded', () => {
       formJson.datePosted = '2018-11-28'
       return formJson
     },
-    onSuccess: (response) => {
+    onSuccess: (_response) => {
       document.getElementById('info-box').textContent = 'Submitted successfully'
     },
-    onFailure: (response) => {
+    onFailure: (_response) => {
       document.getElementById('info-box').textContent = 'Failed to submit'
     }
   }

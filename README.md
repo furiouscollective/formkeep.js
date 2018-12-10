@@ -25,6 +25,7 @@ This library offers a few methods to make it easier to add interactivity to Form
 ## Contents
 
 - __[Guide](#guide)__
+  - [Run samples locally](#samples)
   - [Show a success message](#show-a-success-message)
   - [Redirect to a page depending on input](#redirect-to-a-page-depending-on-input)
   - [Redirect to a page depending on input](#redirect-to-a-page-depending-on-input)
