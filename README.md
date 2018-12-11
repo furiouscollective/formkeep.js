@@ -5,17 +5,17 @@ This library offers a few methods to make it easier to add interactivity to Form
 ## Installation
 
 ### With a bundler
-- `npm install formkeep`, or
-- `yarn add formkeep`
+- `npm install @formkeep/formkeep`, or
+- `yarn add @formkeep/formkeep`
 - Then use in your code with:
   ```javascript
-    const FormKeep = require('formkeep')
+    const FormKeep = require('@formkeep/formkeep')
   ```
 
 ### Without a bundler
 - Add to your HTML header:
   ```html
-    <script src="unpkg.com/formkeep/dist/index.js"></script>
+    <script src="unpkg.com/@formkeep/formkeep"></script>
   ```
 - Use the `FormKeep` global variable:
   ```javascript
