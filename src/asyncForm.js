@@ -1,5 +1,5 @@
 import { post } from './post'
-import { buildJsonFromForm } from './utils'
+import { buildJsonFromForm, validateFormkeepIdentifier } from './utils'
 
 const handleSubmitAsync = (event, identifier, config = {}) => {
   // Prevent regular submission
@@ -33,5 +33,9 @@ const handleSubmitAsync = (event, identifier, config = {}) => {
 }
 
 export const asyncForm = (form, identifier, config) => {
+  if (!validateFormkeepIdentifier(identifier)) {
+    return false
+  }
+
   form.addEventListener('submit', (event) => handleSubmitAsync(event, identifier, config))
 }

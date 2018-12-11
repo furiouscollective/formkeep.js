@@ -20,7 +20,10 @@ const handleSubmitWithThanks = (form, config) => {
   const heading = config.setHeading(formJson)
   const subheading = config.setSubheading(formJson)
 
-  form.appendChild(createUtf8Input())
+  if (!form.querySelector('input[name=utf8]')) {
+    form.appendChild(createUtf8Input())
+  }
+
   form.appendChild(createHiddenInput('_redirect_url', buildThanksUrl(heading, subheading)))
 }
 

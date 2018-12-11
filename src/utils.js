@@ -19,3 +19,13 @@ export const createHiddenInput = (name, value) => {
 export const createUtf8Input = () => {
   return createHiddenInput('utf8', '✓')
 }
+
+export const validateFormkeepIdentifier = (identifier) => {
+  const valid = identifier.length == 12 && identifier.match(/[a-f0-9]+/)
+
+  if (!valid) {
+    console.error('Check your formkeep identifier, it appears to be invalid')
+  }
+
+  return valid
+}

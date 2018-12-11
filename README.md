@@ -157,7 +157,7 @@ This library offers a few methods to make it easier to add interactivity to Form
         return "Thanks, " + formJson.name + "!"
       },
       setSubheading: function(formJson) {
-        return "We will contact you at" + formJson.email + " soon"
+        return "We will contact you at " + formJson.email + " soon"
       }
     })
   })
@@ -196,7 +196,7 @@ __Note__ you can also leave out the `onSuccess` and `onFailure` callbacks and `a
 
     FormKeep.asyncForm(form, '<YOUR_FORM_IDENTIFIER>', {
       beforeSubmit: (formJson) => {
-        if (!form.querySelector('input[name=email]').value.includes('@')) {
+        if (!formJson.email.includes('@')) {
           return false
         }
 
