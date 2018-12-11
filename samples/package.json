@@ -1,0 +1,16 @@
+{
+  "name": "formkeep-samples",
+  "version": "0.0.0",
+  "main": "index.html",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel **/*.html"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.0",
+    "parcel": "^1.10.3"
+  },
+  "dependencies": {
+    "@formkeep/formkeep": "^0.0.0"
+  }
+}

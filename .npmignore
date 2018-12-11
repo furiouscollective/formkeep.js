@@ -1,7 +1,9 @@
+# testing
+e2e/
+
 # yarn
 node_modules/
 yarn-error.log
 
 # parcel
-dist/
 .cache/

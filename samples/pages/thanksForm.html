@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <script src="./formkeep.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        var form = document.getElementById('test-form')
+        FormKeep.thanksForm(form, {
+          setHeading: function(formJson) {
+            return `Thanks ${formJson.name}`
+          },
+          setSubheading: function(formJson) {
+            return `We will soon contact you at ${formJson.email}`
+          }
+        })
+      })
+    </script>
+  </head>
+  <body>
+    <form id="test-form" action="https://formkeep.com/f/149105c7eb4a" method="POST">
+      <div id="info-box"></div>
+      <input type="hidden" name="utf8" value="✓" />
+      <input type="text" name="name" value="John Dowd" />
+      <input type="text" name="email" value="test@example.com" />
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>
