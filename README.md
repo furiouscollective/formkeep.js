@@ -28,9 +28,9 @@ This library offers a few methods to make it easier to add interactivity to Form
   - [Run samples locally](#samples)
   - [Show a success message](#show-a-success-message)
   - [Redirect to a page depending on input](#redirect-to-a-page-depending-on-input)
-  - [Redirect to a page depending on input](#redirect-to-a-page-depending-on-input)
   - [Customize the Thanks page depending on input](#customize-the-thanks-page-depending-on-input)
   - [Submit the form through AJAX](#submit-the-form-through-ajax)
+  - [Post JSON data to FormKeep](#post-json-data-to-formkeep)
 
 - __[API](#api)__
   - [post](#post)
