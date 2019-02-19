@@ -15,7 +15,10 @@ This library offers a few methods to make it easier to add interactivity to Form
 ### Without a bundler
 - Add to your HTML header:
   ```html
+    <!-- For library use: -->
     <script src="unpkg.com/@formkeep/formkeep"></script>
+    <!-- For autoload use: -->
+    <script src="unpkg.com/@formkeep/formkeep/autoload"></script>
   ```
 - Use the `FormKeep` global variable:
   ```javascript
@@ -48,7 +51,7 @@ This library offers a few methods to make it easier to add interactivity to Form
 
 ### Show a success message
 
-1. [Load the script](#without-a-bundler)
+1. [Load the autoload script](#without-a-bundler)
 1. Add a `<form>` with `data-formkeep-id="<YOUR_FORM_IDENTIFIER>"`
 1. Give the `<form>` or any other element an `id="<SOME_UNIQUE_ID>"`
 1. Add a `<template>` with `data-formkeep-success-template=<YOUR_FORM_IDENTIFIER>` and `data-target="#<SOME_UNIQUE_ID>"` _(notice the `#`)_
