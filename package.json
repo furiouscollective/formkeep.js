@@ -1,6 +1,6 @@
 {
   "name": "@formkeep/formkeep",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "FormKeep helpers for the browser",
   "main": "./dist/index.js",
   "author": "FormKeep",
@@ -8,7 +8,7 @@
   "scripts": {
     "test": "jest",
     "test:debug": "node --inspect node_modules/.bin/jest --runInBand",
-    "build": "parcel build index.js --global FormKeep",
+    "build": "parcel build index.js --global FormKeep autoload.js",
     "prepare": "yarn build"
   },
   "devDependencies": {
