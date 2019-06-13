@@ -1,4 +1,4 @@
-import FormKeep from './index'
+import * as FormKeep from './index'
 
 describe('index.js', () => {
   [
