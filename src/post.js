@@ -23,7 +23,6 @@ export const post = (formkeepIdentifier, jsonData, config = {}) => {
         }
 
         if (Xhr.status >= 400 && Xhr.status < 600) {
-          console.error()
           reject(getResult(Xhr))
         }
       })
