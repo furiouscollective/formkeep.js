@@ -1,6 +1,6 @@
 {
   "name": "@formkeep/formkeep",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "FormKeep helpers for the browser",
   "main": "./dist/index.js",
   "author": "FormKeep",
