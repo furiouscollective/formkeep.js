@@ -1,6 +1,6 @@
 {
   "name": "@formkeep/formkeep",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "FormKeep helpers for the browser",
   "main": "./dist/index.js",
   "author": "FormKeep",
@@ -14,7 +14,6 @@
   "devDependencies": {
     "@babel/core": "^7.6.0",
     "@babel/preset-env": "^7.6.0",
-    "babel-jest": "^24.9.0",
     "jest": "^24.9.0",
     "parcel-bundler": "^1.12.3",
     "xhr-mock": "^2.5.0"
