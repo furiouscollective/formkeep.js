@@ -838,10 +838,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@formkeep/formkeep@^0.0.0":
-  version "0.0.0"
-  resolved "https://registry.yarnpkg.com/@formkeep/formkeep/-/formkeep-0.0.0.tgz#9f5ac88bc37e3770bbefeebbefb8c68bdeb9916d"
-  integrity sha512-1ucNpmN3yPlN3iZ24aDnoBMPvO/+hEZuGcpgPKgE6USjdLk0NEk776GrjmG4mPEPSpu5zXfYIoQIGk6BxxntFg==
+"@formkeep/formkeep@0.0.8":
+  version "0.0.8"
+  resolved "https://registry.yarnpkg.com/@formkeep/formkeep/-/formkeep-0.0.8.tgz#815b4eec5f0e6a3c8496a5a3796548f7e94b0c2d"
+  integrity sha512-tkYM/vh+7L7t1iqrn6rI+9LdDLm+P/AGlToFVqR+/QVXV5IdqjJx144f3BeypKS29yHMoBH/lFp3XyIARYPyxA==
 
 "@iarna/toml@^2.2.0":
   version "2.2.5"
